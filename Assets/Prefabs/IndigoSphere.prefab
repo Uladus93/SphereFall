@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7375716423006431903}
   m_Layer: 0
   m_Name: IndigoSphere
-  m_TagString: Untagged
+  m_TagString: indigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
