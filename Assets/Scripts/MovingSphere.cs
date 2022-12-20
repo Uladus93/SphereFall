@@ -5,17 +5,30 @@ using UnityEngine;
 public class MovingSphere : MonoBehaviour
 {
     private Rigidbody _rb;
-    [SerializeField]private float _speed;
-    [SerializeField]private float _timeSpeed;
+    private float _speed;
+    private float timeSpeed;
+    public float TimeSpeed
+    {
+        get { return timeSpeed; }
+        set
+        {
+            timeSpeed = value;
+            if (TimeSpeed > 40)
+            {
+                TimeSpeed = 40;
+            }
+        }
+    }
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _speed = DetectingColor.Detecting(gameObject.tag);
-        _timeSpeed = (_speed + Time.unscaledTime);
+        TimeSpeed = (_speed + Time.unscaledTime / 10);
     }
     void Update()
     {
-        _rb.MovePosition(transform.position + Vector3.down * Time.deltaTime * _timeSpeed);
+        _rb.MovePosition(transform.position + Vector3.down * Time.deltaTime * TimeSpeed);
+        Debug.Log(TimeSpeed);
     }
 }
