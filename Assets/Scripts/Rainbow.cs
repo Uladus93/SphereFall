@@ -1,10 +1,10 @@
 enum Rainbow
 {
-    violet = 1,
-    indigo = 2,
-    blue = 3,
+    red = 1,
+    orange = 2,
+    yellow = 3,
     green = 4,
-    yellow = 5,
-    orange = 6,
-    red = 7
+    blue = 5,
+    indigo = 6,
+    violet = 7
 }
