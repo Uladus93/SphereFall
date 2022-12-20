@@ -8,8 +8,8 @@ public class GenerateSphere : MonoBehaviour
     public static bool[] _isSphere = new bool[7];
     private float _timer = 0;
     private int _broadX = 8;
-    private byte _broadY = 7;
-    private sbyte _broadZ = -4;
+    private float _broadY = 5.5f;
+    private float _broadZ = -4;
     private float _rnd;
     private Vector3 _coord;
 
@@ -21,12 +21,12 @@ public class GenerateSphere : MonoBehaviour
     void FixedUpdate()
     {
         _timer += Time.deltaTime;
-        if (_timer >= 0.5)
+        if (_timer >= 0.2)
         {
             _rnd = Random.Range(-_broadX, _broadX);
             _coord = new Vector3(_rnd, _broadY, _broadZ);
             int index = Random.Range(0, _spheres.Length);
-            if (_isSphere[index] == false)
+            if (_isSphere[index] == false && GameOver.End == false)
             {
                 Instantiate(_spheres[index], _coord, Quaternion.identity);
                 _isSphere[index] = true;
