@@ -6,7 +6,7 @@ public class MovingSphere : MonoBehaviour
 {
     private Rigidbody _rb;
     private float _speed;
-    private float timeSpeed;
+    [SerializeField]private float timeSpeed;
     public float TimeSpeed
     {
         get { return timeSpeed; }
@@ -24,11 +24,10 @@ public class MovingSphere : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _speed = DetectingColor.Detecting(gameObject.tag);
-        TimeSpeed = _speed + Time.unscaledTime/10;
+        TimeSpeed = _speed + Time.unscaledTime / 5;
     }
     void Update()
     {
-        _rb.MovePosition(transform.position + Vector3.down * Time.deltaTime * TimeSpeed);
-        Debug.Log(gameObject.tag + " " + TimeSpeed);
+        _rb.MovePosition(transform.position + Vector3.down * Time.deltaTime * timeSpeed);
     }
 }
