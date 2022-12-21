@@ -28,7 +28,7 @@ public class MovingSphere : MonoBehaviour
         _speed = DetectingColor.Detecting(gameObject.tag);
         TimeSpeed = _speed + Time.unscaledTime / 10;
     }
-    void Update()
+    void FixedUpdate()
     {
         _rb.MovePosition(transform.position + Vector3.down * Time.deltaTime * timeSpeed);
     }
