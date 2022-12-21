@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
-
+    [SerializeField] private ParticleSystem _particle;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         Control();
@@ -61,6 +60,9 @@ public class PlayerContoller : MonoBehaviour
                 MovingSphere movingSphere = GenerateSphere.Spheres[i].GetComponent<MovingSphere>();
                 Score.PlayerScore += (int)movingSphere.TimeSpeed;
                 isSphere = true;
+                MeshRenderer mr = GenerateSphere.Spheres[i].GetComponent<MeshRenderer>();
+                _particle.startColor = mr.material.color;
+                Instantiate(_particle, GenerateSphere.Spheres[i].transform.position, _particle.transform.rotation);
                 Destroy(GenerateSphere.Spheres[i]);
                 GenerateSphere.Spheres.RemoveAt(i);
                 break;

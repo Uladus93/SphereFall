@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class DestroySphere : MonoBehaviour
 {
-    private string _tag;
     private void Start()
     {
-        _tag = gameObject.tag;
     }
     void FixedUpdate()
     {
