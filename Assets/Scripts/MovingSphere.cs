@@ -24,7 +24,7 @@ public class MovingSphere : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _speed = DetectingColor.Detecting(gameObject.tag);
-        TimeSpeed = _speed + Time.unscaledTime / 5;
+        TimeSpeed = _speed + Time.unscaledTime / 10;
     }
     void Update()
     {
