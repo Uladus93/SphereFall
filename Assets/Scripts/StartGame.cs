@@ -12,5 +12,6 @@ public class StartGame : MonoBehaviour
         Score.PlayerScore = 0;
         Timer.TimerTime = 0;
         GenerateSphere.Spheres.Clear();
+        Time.timeScale = 1;
     }
 }

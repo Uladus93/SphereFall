@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 292118358}
   - component: {fileID: 292118360}
   - component: {fileID: 292118359}
+  - component: {fileID: 292118361}
   m_Layer: 5
   m_Name: Game Over Text
   m_TagString: Untagged
@@ -413,15 +414,15 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4292477043
+  m_fontColor: {r: 0.45098042, g: 0, b: 0.854902, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 0
   m_fontColorGradient:
-    topLeft: {r: 0.454902, g: 0, b: 0.87843144, a: 1}
-    topRight: {r: 0.454902, g: 0, b: 0.87843144, a: 1}
-    bottomLeft: {r: 0.454902, g: 0, b: 0.87843144, a: 1}
-    bottomRight: {r: 0.454902, g: 0, b: 0.87843144, a: 1}
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -481,6 +482,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292118357}
   m_CullTransparentMesh: 1
+--- !u!114 &292118361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292118357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3577f7c96c948694f813f0bcc7e62195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameOver: {fileID: 292118359}
+  time: 0
+  _violet: {fileID: 2100000, guid: af52e81eefeaff740b25130664f64f41, type: 2}
+  _orange: {fileID: 2100000, guid: af1a2f82c8b688049a6347f700919857, type: 2}
+  _violetColor: {r: 0, g: 0, b: 0, a: 0}
+  _orangeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &357518665
 GameObject:
   m_ObjectHideFlags: 0

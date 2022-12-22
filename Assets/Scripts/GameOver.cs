@@ -9,13 +9,8 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _gameOver;
     [SerializeField] private Button _restart;
-    private static bool _end = false;
-    public static bool End
-    {
-        get { return _end; }
-        set { _end = value; }
-    }
 
+    public static bool End { get; set; }
     private void FixedUpdate()
     {
         if (Lifes.Life < 1)

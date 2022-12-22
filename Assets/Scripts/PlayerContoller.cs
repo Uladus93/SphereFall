@@ -55,10 +55,7 @@ public class PlayerContoller : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.M))
             {
-                if (_pause)
-                {
-                    _pause = false;
-                }
+                _pause = false;
                 SceneManager.LoadScene(0);
             }
             if (Input.GetKeyDown(KeyCode.P))

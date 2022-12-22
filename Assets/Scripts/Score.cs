@@ -26,6 +26,6 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-        _score.text = $"Score: {PlayerScore.ToString()}";
+        _score.text = $"Score: {PlayerScore}";
     }
 }
