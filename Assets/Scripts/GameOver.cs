@@ -32,6 +32,7 @@ public class GameOver : MonoBehaviour
         Lifes.Life = 3;
         Score.PlayerScore = 0;
         Timer.TimerTime = 0;
+        GenerateSphere.Spheres.Clear();
         End = false;
     }
 }

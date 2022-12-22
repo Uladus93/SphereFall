@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerContoller : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particle;
+    public GameObject _pauseScreen;
+    private bool _pause;
+
     void Start()
     {
     }
@@ -16,35 +20,46 @@ public class PlayerContoller : MonoBehaviour
 
     private void Control()
     {
-        if (GameOver.End == false && Input.anyKeyDown)
+        if (Input.anyKeyDown)
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (!GameOver.End)
             {
-                AddScore("red");
+                if (Input.GetKeyDown(KeyCode.Keypad1))
+                {
+                    AddScore("red");
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad2))
+                {
+                    AddScore("orange");
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad3))
+                {
+                    AddScore("yellow");
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad5))
+                {
+                    AddScore("green");
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad7))
+                {
+                    AddScore("blue");
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad8))
+                {
+                    AddScore("indigo");
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad9))
+                {
+                    AddScore("violet");
+                }
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    Pause();
+                }
             }
-            if (Input.GetKeyDown(KeyCode.Keypad2))
+            if (Input.GetKeyDown(KeyCode.M))
             {
-                AddScore("orange");
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad3))
-            {
-                AddScore("yellow");
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad5))
-            {
-                AddScore("green");
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad7))
-            {
-                AddScore("blue");
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad8))
-            {
-                AddScore("indigo");
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad9))
-            {
-                AddScore("violet");
+                SceneManager.LoadScene(0);
             }
         } 
     }
@@ -70,7 +85,25 @@ public class PlayerContoller : MonoBehaviour
         }
         if (isSphere == false)
         {
-            Score.PlayerScore -= (int)Timer.TimerTime;
+            Score.PlayerScore -= DetectingColor.Detecting(colorSphere) * 2;
+        }
+        isSphere = false;
+    }
+
+    void Pause()
+    {
+        if (!_pause)
+        {
+            _pause = true;
+            _pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            _pause = false;
+            _pauseScreen.SetActive(false);
+            Time.timeScale = 1;
         }
     }
+
 }

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] private Button _start;
     public void StartNewGame()
     {
         SceneManager.LoadScene(1);
+        Lifes.Life = 3;
+        Score.PlayerScore = 0;
+        Timer.TimerTime = 0;
+        GenerateSphere.Spheres.Clear();
     }
 }
