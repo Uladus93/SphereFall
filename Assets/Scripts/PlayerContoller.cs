@@ -22,7 +22,7 @@ public class PlayerContoller : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            if (!GameOver.End)
+            if (!GameOver.End && !_pause)
             {
                 if (Input.GetKeyDown(KeyCode.Keypad1))
                 {
@@ -52,14 +52,18 @@ public class PlayerContoller : MonoBehaviour
                 {
                     AddScore("violet");
                 }
-                if (Input.GetKeyDown(KeyCode.P))
-                {
-                    Pause();
-                }
             }
             if (Input.GetKeyDown(KeyCode.M))
             {
+                if (_pause)
+                {
+                    _pause = false;
+                }
                 SceneManager.LoadScene(0);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Pause();
             }
         } 
     }
