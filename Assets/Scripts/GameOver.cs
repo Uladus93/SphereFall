@@ -31,6 +31,7 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Lifes.Life = 3;
         Score.PlayerScore = 0;
+        Timer.TimerTime = 0;
         End = false;
     }
 }

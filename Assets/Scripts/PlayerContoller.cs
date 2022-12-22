@@ -7,7 +7,6 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private ParticleSystem _particle;
     void Start()
     {
-        
     }
 
     void Update()
@@ -61,7 +60,8 @@ public class PlayerContoller : MonoBehaviour
                 Score.PlayerScore += (int)movingSphere.TimeSpeed;
                 isSphere = true;
                 MeshRenderer mr = GenerateSphere.Spheres[i].GetComponent<MeshRenderer>();
-                _particle.startColor = mr.material.color;
+                ParticleSystem.MainModule particleMain = _particle.main;
+                particleMain.startColor = mr.material.color;
                 Instantiate(_particle, GenerateSphere.Spheres[i].transform.position, _particle.transform.rotation);
                 Destroy(GenerateSphere.Spheres[i]);
                 GenerateSphere.Spheres.RemoveAt(i);
@@ -70,8 +70,7 @@ public class PlayerContoller : MonoBehaviour
         }
         if (isSphere == false)
         {
-            Score.PlayerScore -= (int)Time.unscaledTime;
+            Score.PlayerScore -= (int)Timer.TimerTime;
         }
-        isSphere = false;
     }
 }
