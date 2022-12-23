@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class DestroySphere : MonoBehaviour
 {
-    private void Start()
-    {
-    }
     void FixedUpdate()
     {
-        if (transform.position.y <= -5.5)
+        if (transform.position.y <= -5.5f)
         {
             Destroy(gameObject);
             GenerateSphere.Spheres.Remove(gameObject);

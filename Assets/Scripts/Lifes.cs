@@ -23,17 +23,13 @@ public class Lifes : MonoBehaviour
             }
         } 
     }
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
         if (life <= 1)
         {
-            _lifes.text = $"Life: {life.ToString()}";
+            _lifes.text = $"Life: {life}";
         }
-        else _lifes.text = $"Lifes: {life.ToString()}";
+        else _lifes.text = $"Lifes: {life}";
     }
 }
