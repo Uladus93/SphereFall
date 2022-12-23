@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class PlayerContoller : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particle;
+    private AudioSource _sound;
+    private bool _isPlaying = true;
     public GameObject _pauseScreen;
     private bool _pause;
 
     void Start()
     {
+        _sound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -53,11 +56,6 @@ public class PlayerContoller : MonoBehaviour
                     AddScore("violet");
                 }
             }
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                _pause = false;
-                SceneManager.LoadScene(0);
-            }
             if (Input.GetKeyDown(KeyCode.P))
             {
                 Pause();
@@ -65,6 +63,24 @@ public class PlayerContoller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 GameOver.Restart();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                if (_isPlaying)
+                {
+                    _sound.Pause();
+                    _isPlaying = false;
+                }
+                else
+                {
+                    _sound.Play();
+                    _isPlaying = true;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                _pause = false;
+                SceneManager.LoadScene(0);
             }
         } 
     }
