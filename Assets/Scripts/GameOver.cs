@@ -7,17 +7,15 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _gameOver;
-    [SerializeField] private Button _restart;
-
+    [SerializeField] private GameObject _gameOverCanvas;
     public static bool End { get; set; }
     private void FixedUpdate()
     {
         if (Lifes.Life < 1)
         {
+            _gameOverCanvas.SetActive(true);
             End = true;
-            _gameOver.gameObject.SetActive(true);
-            _restart.gameObject.SetActive(true);
+            PlayerContoller._pause = true;
         }
     }
 

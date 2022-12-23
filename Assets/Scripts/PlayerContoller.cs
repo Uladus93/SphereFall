@@ -10,7 +10,8 @@ public class PlayerContoller : MonoBehaviour
     private bool _isPlaying = true;
     [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _menuScreen;
-    private bool _pause;
+    [SerializeField] private GameObject _gameOver;
+    public static bool _pause;
     void Start()
     {
         _sound = GetComponent<AudioSource>();
@@ -25,7 +26,7 @@ public class PlayerContoller : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            if (!GameOver.End && !_pause)
+            if (!GameOver.End || !_pause)
             {
                 if (Input.GetKeyDown(KeyCode.Keypad1))
                 {
@@ -56,21 +57,35 @@ public class PlayerContoller : MonoBehaviour
                     AddScore("violet");
                 }
             }
-            if (Input.GetKeyDown(KeyCode.P) && !_menuScreen.activeSelf)
+            if (Input.GetKeyDown(KeyCode.P) && !_menuScreen.activeSelf && !_gameOver.activeSelf)
             {
                 Pause(_pauseScreen);
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if (GameOver.End && _gameOver.activeSelf)
+                {
+                    _pause = true;
+                }
                 if (_menuScreen.activeSelf)
                 {
                     Pause(_menuScreen);
+                    GameOver.Restart();
                 }
                 else if (_pauseScreen.activeSelf)
                 {
                     Pause(_pauseScreen);
+                    GameOver.Restart();
                 }
-                GameOver.Restart();
+                else if (_gameOver.activeSelf)
+                {
+                    Pause(_gameOver);
+                    GameOver.Restart();
+                }
+                else
+                {
+                    GameOver.Restart();
+                }
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -90,8 +105,17 @@ public class PlayerContoller : MonoBehaviour
                 if (_pauseScreen.activeSelf)
                 {
                     Pause(_pauseScreen);
+                    Pause(_menuScreen);
                 }
-                Pause(_menuScreen);
+                else if (_gameOver.activeSelf)
+                {
+                    Pause(_gameOver);
+                    Pause(_menuScreen);
+                }
+                else
+                {
+                    Pause(_menuScreen);
+                }
             }
         } 
     }
