@@ -20,14 +20,17 @@ public class ChangeColor : MonoBehaviour
     }
     void Update()
     {
-        time += Time.deltaTime;
-        if ((int)time % 2 != 0)
+        if (gameObject.activeSelf)
         {
-            _gameOver.color = _violetColor;
-        }
-        else
-        {
-            _gameOver.color = _orangeColor;
+            time += Time.deltaTime;
+            if ((int)time % 2 == 0)
+            {
+                _gameOver.color = _violetColor;
+            }
+            else
+            {
+                _gameOver.color = _orangeColor;
+            }
         }
     }
 }

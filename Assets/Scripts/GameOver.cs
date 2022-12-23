@@ -21,7 +21,7 @@ public class GameOver : MonoBehaviour
         }
     }
 
-    public void Restart()
+    public static void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Lifes.Life = 3;

@@ -62,6 +62,10 @@ public class PlayerContoller : MonoBehaviour
             {
                 Pause();
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GameOver.Restart();
+            }
         } 
     }
 
