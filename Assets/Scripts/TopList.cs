@@ -40,7 +40,7 @@ public class TopList : MonoBehaviour
 
     public void LoadBestScore()
     {
-        string path = Application.persistentDataPath + "/savefile.json";
+        string path = Application.persistentDataPath + "/BestScore.json";
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
