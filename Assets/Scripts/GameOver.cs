@@ -23,10 +23,13 @@ public class GameOver : MonoBehaviour
 
     public static void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Lifes.Life = 3;
         Score.PlayerScore = 0;
         Timer.TimerTime = 0;
+        foreach (var item in GenerateSphere.Spheres)
+        {
+            Destroy(item);
+        }
         GenerateSphere.Spheres.Clear();
         End = false;
     }

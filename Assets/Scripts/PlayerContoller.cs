@@ -8,9 +8,9 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private ParticleSystem _particle;
     private AudioSource _sound;
     private bool _isPlaying = true;
-    public GameObject _pauseScreen;
+    [SerializeField] private GameObject _pauseScreen;
+    [SerializeField] private GameObject _menuScreen;
     private bool _pause;
-
     void Start()
     {
         _sound = GetComponent<AudioSource>();
@@ -56,12 +56,20 @@ public class PlayerContoller : MonoBehaviour
                     AddScore("violet");
                 }
             }
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.P) && !_menuScreen.activeSelf)
             {
-                Pause();
+                Pause(_pauseScreen);
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if (_menuScreen.activeSelf)
+                {
+                    Pause(_menuScreen);
+                }
+                else if (_pauseScreen.activeSelf)
+                {
+                    Pause(_pauseScreen);
+                }
                 GameOver.Restart();
             }
             if (Input.GetKeyDown(KeyCode.S))
@@ -79,8 +87,11 @@ public class PlayerContoller : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                _pause = false;
-                SceneManager.LoadScene(0);
+                if (_pauseScreen.activeSelf)
+                {
+                    Pause(_pauseScreen);
+                }
+                Pause(_menuScreen);
             }
         } 
     }
@@ -111,20 +122,19 @@ public class PlayerContoller : MonoBehaviour
         isSphere = false;
     }
 
-    void Pause()
+    public void Pause(GameObject panel)
     {
         if (!_pause)
         {
             _pause = true;
-            _pauseScreen.SetActive(true);
+            panel.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
             _pause = false;
-            _pauseScreen.SetActive(false);
+            panel.SetActive(false);
             Time.timeScale = 1;
         }
     }
-
 }
