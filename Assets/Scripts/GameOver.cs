@@ -16,6 +16,12 @@ public class GameOver : MonoBehaviour
             _gameOverCanvas.SetActive(true);
             End = true;
             PlayerContoller._pause = true;
+            if (Score.PlayerScore > TopList.Instance.YourScore)
+            {
+                TopList.Instance.YourScore = Score.PlayerScore;
+                TopList.Instance.YourNickName = PlayerName.Instance._playerName;
+                TopList.Instance.SaveBestScore();
+            }
         }
     }
 
