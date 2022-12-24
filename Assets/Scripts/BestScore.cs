@@ -5,9 +5,20 @@ using TMPro;
 
 public class BestScore : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI m_TextMeshPro;
-    void Start()
+    [SerializeField]private TextMeshProUGUI m_TextMeshPro;
+
+
+    private void Start()
     {
-        m_TextMeshPro.text = $"BEST SCORE: {TopList.Instance.YourNickName} - {TopList.Instance.YourScore}";
+        TheBestScore();
+    }
+
+    private void FixedUpdate()
+    {
+        TheBestScore();
+    }
+    public void TheBestScore()
+    {
+        m_TextMeshPro.text = $"BEST SCORE: {TopList.Instance.YourNickName} : {TopList.Instance.YourScore}";
     }
 }

@@ -36,5 +36,6 @@ public class GameOver : MonoBehaviour
         }
         GenerateSphere.Spheres.Clear();
         End = false;
+        TopList.Instance.LoadBestScore();
     }
 }
